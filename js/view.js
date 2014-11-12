@@ -31,4 +31,46 @@
 			
 		}
 	};
+	
+	View.prototype.render = function () {
+		var view = this;
+		var board = view.board;
+		
+		var cellsMatrix = buildCellsMatrix();
+		board.snake.segments.forEach(function (seg) {
+			cellsMatrix[seg.x][seg.y].addClass("snake");
+		});
+		
+		cellsMatrix[board.apple.position.x][board.apple.position.y].addClass("apple");
+		
+		this.$el.empty();
+		cellsMatrix.forEach(function (row) {
+			var $rowEl = $('<div class="row"></div>');
+			row.forEach(function ($cell) { $rowEl.append($cell) });
+			view.$el.append($rowEl);
+		});
+		
+		function buildCellsMatrix () {
+			var cellsMatrix = [];
+			for (var i = 0; i < board.dim; i++) {
+				var cellsRow = [];
+				for (var j = 0; j < board.dim; j++) {
+					cellsRow.push($('<div class="cell"></div'));
+				}
+				cellsMatrix.push(cellsRow);
+			}
+			
+			return cellsMatrix;
+		}
+	};
+	
+	View.prototype.step = function () {
+		if (this.board.snake.segments.length > 0) {
+			this.board.snake.move();
+			this.render();
+		} else {
+			alert("You lose!");
+			window.clearInterval(this.intervalId);
+		}
+	};
 })();
