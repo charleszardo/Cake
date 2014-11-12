@@ -1,7 +1,7 @@
 (function () {
-	if (typeof SnakeGame = "undefined"){
+	if (typeof SnakeGame == "undefined"){
 		window.SnakeGame = {};
-	}
+	};
 	
 	var Coord = SnakeGame.Coord = function (x, y) {
 		this.x = x;
@@ -10,23 +10,27 @@
 	
 	Coord.prototype.equals = function (coord2) {
 		return (this.x == coord2.x) && (this.y == coord2.y);
-	}
+	};
 	
 	Coord.prototype.plus = function (coord2) {
 		return new Coord(this.x + coord2.x, this.y + coord2.y);
 	};
 	
-	var Apple = SnakeGame.Apply = function (board) {
-		this.board = board;
-		this.replace();
-	}
+	Coord.prototype.isOpposite = function (coord2) {
+		return (this.x == (-1 & coord2.x)) && (this.y == (-1 * coord2.y));
+	};
 	
-	Apple.prototype.replace = function () {
+	var Apple = SnakeGame.Apple = function (board) {
+		this.board = board;
+		this.place();
+	};
+	
+	Apple.prototype.place = function () {
 		var x = Math.floor(Math.random() * this.board.dim);
 		var y = Math.floor(Math.random() * this.board.dim);
 		
 		this.position = new Coord(x, y);
-	}
+	};
 	
 	var Snake = SnakeGame.Snake = function (board) {
 		this.dir = "U";
@@ -69,7 +73,7 @@
 			if (this.segments[i].equals(head)){
 				return false;
 			}
-		}
+		};
 		
 		return true;
 	};
@@ -78,7 +82,7 @@
 		this.segments.push(this.head().plus(Snake.DIFFS[this.dir]));
 		
 		if (this.eat()) {
-			this.board.apple.replace();
+			this.board.apple.place();
 		}
 		
 		if (this.growths > 0) {
@@ -140,7 +144,7 @@
 	};
 	
 	Board.prototype.validPos = function (pos){
-		return (pos.i >= 0) && (pos.i <= 19) && (pos.j >= 0) && (pos.j <= 19);
+		return (pos.i >= 0) && (pos.i < this.dim) && (pos.j >= 0) && (pos.j < this.dim);
 	};
 	
 })();

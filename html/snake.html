@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Snakez</title>
+
+    <script type="text/javascript"
+             src="../js/jquery-1.9.1.js"></script>
+    <script type="text/javascript"
+             src="../js/underscore.js"></script>
+    <script type="text/javascript"
+             src="../js/snake.js"></script>
+    <script type="text/javascript"
+             src="../js/view.js"></script>
+    <link rel="stylesheet" href="../css/snake.css"></link>
+  </head>
+
+  <body>
+    <div id="grid"></div>
+
+    <script>
+      $(function () { new SnakeGame.View($("#grid")); });
+    </script>
+  </body>
+</html>
