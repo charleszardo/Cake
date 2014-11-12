@@ -1,5 +1,5 @@
 (function () {
-	if (typeof SnakeGame == "undefined"){
+	if (typeof SnakeGame === "undefined"){
 		window.SnakeGame = {};
 	};
 	
@@ -56,6 +56,7 @@
 	Snake.prototype.eat = function () {
 		if (this.head().equals(this.board.apple.position)){
 			this.growths += 1;
+			this.board.points += 1;
 			return true;
 		} else {
 			return false;
@@ -107,6 +108,7 @@
 	
 	var Board = SnakeGame.Board = function (dim) {
 		this.dim = dim;
+		this.points = 0;
 		
 		this.apple = new Apple(this);
 		this.snake = new Snake(this);
@@ -144,7 +146,7 @@
 	};
 	
 	Board.prototype.validPos = function (pos){
-		return (pos.i >= 0) && (pos.i < this.dim) && (pos.j >= 0) && (pos.j < this.dim);
+		return (pos.x >= 0) && (pos.x < this.dim) && (pos.y >= 0) && (pos.y < this.dim);
 	};
 	
 })();

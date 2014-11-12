@@ -1,0 +1,62 @@
+/* --- Reset user agent styles --- */
+html, body, header, h1, h2, nav, ul, li, a, footer, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+	
+}
+
+/* --- Set basic html elements --- */
+body {
+  font-family: 'Open Sans', sans-serif;
+	background: #F6F6F6;
+	background-image: url('background.jpeg');
+  color: #333;
+}
+
+li {
+	list-style: none;
+	float: left;
+}
+
+#grid-container {
+	margin: 25px auto;
+	width: 650px;
+	height: 650px;
+	background-image: url('light_toast.png');
+}
+
+#grid {
+	margin: auto;
+	width: 550px;
+}
+
+#title {
+	text-align: center;
+	font-size: 50px;
+	color: white;
+}
+
+.cell {
+  float: left;
+  height: 25px;
+  width: 25px;
+  background: #eee;
+
+  border: solid gray 1px;
+}
+
+.snake {
+  background-color: green;
+}
+
+.apple {
+  background-image: url('birthday_cake.jpeg');
+	background-size: 25px 25px;
+}
+
+.row {
+  clear: both;
+}
