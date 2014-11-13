@@ -45,11 +45,6 @@
 	View.prototype.handlePause = function () {
 		this.paused = !this.paused;
 		($(".modal").toggleClass("is-active"));
-		// if ($( ".modal").hasClass("is-active")){
-		// 	$( ".modal").removeClass("is-active");
-		// } else {
-		// 	$( ".modal").addClass("is-active");
-		// }
 	}
 
   View.prototype.render = function () {
@@ -126,9 +121,7 @@
 		var currentView = this;
 
 		$("button").click(function() {
-			// currentView.paused = true;
-			currentView.reset(currentView.highScore);
-			// new SnakeGame.View($("#grid"), this.highScore);			
+			currentView.reset(currentView.highScore);	
 		})
 	}
 	

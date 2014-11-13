@@ -30,16 +30,13 @@
 		var y = Math.floor(Math.random() * this.board.dim);
 		
 		var pos = new Coord(x, y);
-		// while (!this.board.emptyCell(pos)){
-		// 	var pos = new Coord(x, y);
-		// };
+
 		if (!this.board.emptyCell(pos)){
 			this.place();
 		} else {
 			this.position = pos;
 		}
-		// this.position = new Coord(x, y);
-		// this.position = pos;
+
 	};
 	
 	var Snake = SnakeGame.Snake = function (board) {

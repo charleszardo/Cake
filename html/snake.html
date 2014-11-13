@@ -11,6 +11,7 @@
     <script type="text/javascript"
              src="../js/view.js"></script>
     <link rel="stylesheet" href="../css/snake.css"></link>
+		<link rel="stylesheet" href="../css/webicons.css"></link>
 		<link rel="shortcut icon" href="../images/favicon.ico">
 		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   </head>
@@ -31,9 +32,8 @@
 			</div>
 			
     	<div id="grid"></div>
-			<br>
-			
-			
+			<p id="controls">space: pause</p>
+		
 		</div>
 		
 		<div id="credits">
@@ -54,13 +54,14 @@
 					
 					<div class="modal-display">
 						<h1 id="modal-header">game over</h1>
-						<button>play again?</button>
+						<button>play again</button>
 					</div>
 		    </article>
 
 		    <div class="modal-screen js-hide-modal"></div>
 		</section>
-
+		
+		
 
     <script>
       $(function () {

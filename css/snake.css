@@ -29,7 +29,7 @@ a {
 	margin: 25px auto;
 	padding: 20px 20px 0 20px;
 	width: 600px;
-	height: 700px;
+	height: 720px;
 	background-image: url('../images/light_toast.png');
 }
 
@@ -102,7 +102,7 @@ a {
 
 #controls {
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 45px;
 	font-size: 14px;
 	font-family: sans-serif;
 }
