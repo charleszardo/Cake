@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Snakez</title>
+    <title>cake</title>
 
     <script type="text/javascript"
              src="../js/jquery-1.9.1.js"></script>
@@ -11,21 +11,52 @@
     <script type="text/javascript"
              src="../js/view.js"></script>
     <link rel="stylesheet" href="../css/snake.css"></link>
+		<link rel="shortcut icon" href="../images/favicon.ico">
+		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
 
 		
 		<div id="grid-container">
-			<div id="title">cake</div>
+			<div id="title-container">
+				<div id="title">
+					cake
+				</div>
+			</div>
+			
 			<div id="info">
 				<li id="points"></li>
+				<li id="high_score"></li>
 			</div>
+			
     	<div id="grid"></div>
+			<br>
+			
+			
 		</div>
+		
+		<div id="credits">
+			<p>Built by Dave Charnuska</p>
+		</div>
+		
+		<section id="modal" class="modal">
+		    <article class="modal-content">
+		      <span class="modal-close js-hide-modal">&times;</span>
+
+		      <h1 id="modal-header">paused</h1>
+
+					<p id="controls">
+						<strong>controls:</strong> up | down | left | right | space - pause
+					</p>
+		    </article>
+		    <div class="modal-screen js-hide-modal"></div>
+		  </section>
 
     <script>
-      $(function () { new SnakeGame.View($("#grid")); });
+      $(function () {
+				new SnakeGame.View($("#grid"), 0); 
+			});
     </script>
   </body>
 </html>

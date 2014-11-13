@@ -29,7 +29,13 @@
 		var x = Math.floor(Math.random() * this.board.dim);
 		var y = Math.floor(Math.random() * this.board.dim);
 		
-		this.position = new Coord(x, y);
+		var pos = new Coord(x, y);
+		while (!this.board.emptyCell(pos)){
+			var pos = new Coord(x, y);
+		};
+		
+		// this.position = new Coord(x, y);
+		this.position = pos;
 	};
 	
 	var Snake = SnakeGame.Snake = function (board) {
@@ -129,6 +135,26 @@
 		
 		return grid;
 	};
+	
+	Board.prototype.emptyCell = function (cell) {
+		var currentBoard = this;
+		console.log(this.snake)
+		if (this.snake){
+			currentBoard.snake.segments.forEach(function (segment) {
+				if (segment.equals(cell)){
+					return false;
+				}
+			});
+		}
+		
+		if (this.apple){
+			if (currentBoard.apple.position.equals(cell)){
+				return false;
+			}
+		}
+		
+		return true;
+	}
 	
 	Board.prototype.render = function () {
 		var grid = Board.blankGrid(this.dim);

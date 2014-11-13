@@ -3,10 +3,12 @@
     window.SnakeGame = {};
   }
 
-  var View = SnakeGame.View = function ($el) {
+  var View = SnakeGame.View = function ($el, highScore) {
     this.$el = $el;
+		this.paused = false;
+		this.highScore = highScore;
 
-    this.board = new SnakeGame.Board(20);
+    this.board = new SnakeGame.Board(18);
     this.intervalId = window.setInterval(
       this.step.bind(this),
       View.STEP_MILLIS
@@ -25,12 +27,25 @@
   View.STEP_MILLIS = 100;
 
   View.prototype.handleKeyEvent = function (event) {
-    if (View.KEYS[event.keyCode]) {
+		if (event.keyCode == 32){
+			event.preventDefault();
+			this.handlePause();
+		} else if (View.KEYS[event.keyCode]) {
+			event.preventDefault();
       this.board.snake.turn(View.KEYS[event.keyCode]);
     } else {
-      // ignore.
+      // inactive key, ignore.
     }
   };
+	
+	View.prototype.handlePause = function () {
+		this.paused = !this.paused;
+		if ($( ".modal").hasClass("is-active")){
+			$( ".modal").removeClass("is-active")
+		} else {
+			$( ".modal").addClass("is-active")
+		}
+	}
 
   View.prototype.render = function () {
 
@@ -43,7 +58,12 @@
       cellsMatrix[seg.x][seg.y].addClass("snake");
     });
 		
-		$( "li#points" ).text( "Points " + this.board.points );
+		var headIdx = board.snake.segments.length - 1;
+		var head = board.snake.segments[headIdx];
+		cellsMatrix[head.x][head.y].addClass("drake");
+		
+		$( "li#points" ).text( "Points  " + this.board.points );
+		$( "li#high_score").text( "High Score  " + this.highScore );
 		
 		// console.log(board.snake.segments)
 
@@ -71,15 +91,21 @@
   };
 
   View.prototype.step = function () {
-    if (this.board.snake.segments.length > 0) {
+		if (this.paused) {
+			// do nothing, wait to unpause
+		} else if (this.board.snake.segments.length > 0) {
       this.board.snake.move();
       this.render();
     } else {
-      var c = confirm("You lose!  Play again?");
+      var c = confirm("You lose! Play again?");
+			if (this.board.points > this.highScore) {
+				this.highScore = this.board.points;
+			}
       window.clearInterval(this.intervalId);
-			this.board.points = 0;
+			
+			var currentView = this;
 			if (c == true) {
-				new SnakeGame.View($("#grid"));
+				new SnakeGame.View($("#grid"), currentView.highScore);
 			}
     }
   };
