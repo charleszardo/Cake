@@ -43,15 +43,24 @@
 		<section id="modal" class="modal">
 		    <article class="modal-content">
 		      <span class="modal-close js-hide-modal">&times;</span>
+					
+					<div class="modal-display current">
+			      <h1 id="modal-header">paused</h1>
 
-		      <h1 id="modal-header">paused</h1>
-
-					<p id="controls">
-						<strong>controls:</strong> up | down | left | right | space - pause
-					</p>
+						<p id="controls">
+							<strong>controls:</strong> up | down | left | right | space - pause
+						</p>
+					</div>
+					
+					<div class="modal-display">
+						<h1 id="modal-header">game over</h1>
+						<button>play again?</button>
+					</div>
 		    </article>
+
 		    <div class="modal-screen js-hide-modal"></div>
 		</section>
+
 
     <script>
       $(function () {

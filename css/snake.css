@@ -1,5 +1,5 @@
 /* --- Reset user agent styles --- */
-html, body, header, h1, h2, nav, ul, li, a, footer, small {
+html, body, header, h1, h2, nav, ul, li, a, footer, small, button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -68,11 +68,13 @@ a {
   width: 25px;
   background: white;
 
-  border: solid #333 1px;
+  border: solid gray 1px;
 }
 
 .snake {
-  background-color: gray;
+  /*background-color: #8FB6CC;*/
+	background-image: url('../images/drakeface.png');
+	background-size: 25px 25px;
 }
 
 .drake {
@@ -135,6 +137,14 @@ a {
   border-radius: 5px;
 }
 
+.modal-display {
+	display: none;
+}
+
+.modal-display.current {
+	display: block;
+}
+
 .modal-close {
   position: absolute;
   top: 0;
@@ -147,4 +157,20 @@ a {
 #modal-header {
 	font-size: 100px;
 	text-align: center;
+}
+
+button {
+	cursor: pointer;
+  -webkit-appearance: none;
+  outline: 0;
+  display: inline-block;
+  box-sizing: content-box;
+  width: 100px;
+  background: transparent;
+  color: inherit;
+	padding: 25px 0 0 150px;
+}
+
+button:hover {
+	background-position: 0 -50px;
 }

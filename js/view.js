@@ -7,6 +7,7 @@
     this.$el = $el;
 		this.paused = false;
 		this.highScore = highScore;
+		this.inPlay = true;
 
     this.board = new SnakeGame.Board(18);
     this.intervalId = window.setInterval(
@@ -28,7 +29,9 @@
   View.STEP_MILLIS = 100;
 
   View.prototype.handleKeyEvent = function (event) {
-		if (event.keyCode == 32){
+		if (event.keyCode == 32 && !this.inPlay){
+			this.reset(this.highScore);
+		} else if (event.keyCode == 32){
 			event.preventDefault();
 			this.handlePause();
 		} else if (View.KEYS[event.keyCode]) {
@@ -91,7 +94,44 @@
       return cellsMatrix;
     }
   };
+	
+	View.prototype.reset = function (highScore) {
+		($(".modal-display").toggleClass("current"));
+		($(".modal").toggleClass("is-active"));
+		this.paused = false;
+		this.inPlay = true;
+		this.highScore = highScore;
+		this.board = new SnakeGame.Board(18);
+		$("button").off();
+		$(window).off();
+    this.intervalId = window.setInterval(
+      this.step.bind(this),
+      View.STEP_MILLIS
+    );
+		
+    $(window).on("keydown", this.handleKeyEvent.bind(this));
+	};
+	
+	View.prototype.over = function () {
+		this.inPlay = false;
+		window.clearInterval(this.intervalId);
+		
+		($(".modal").toggleClass("is-active"));
+		($(".modal-display").toggleClass("current"));
+		
+		if (this.board.points > this.highScore) {
+			this.highScore = this.board.points;
+		}
+		
+		var currentView = this;
 
+		$("button").click(function() {
+			// currentView.paused = true;
+			currentView.reset(currentView.highScore);
+			// new SnakeGame.View($("#grid"), this.highScore);			
+		})
+	}
+	
   View.prototype.step = function () {
 		if (this.paused) {
 			// do nothing, wait to unpause
@@ -99,16 +139,7 @@
       this.board.snake.move();
       this.render();
     } else {
-      var c = confirm("You lose! Play again?");
-			if (this.board.points > this.highScore) {
-				this.highScore = this.board.points;
-			}
-      window.clearInterval(this.intervalId);
-			
-			var currentView = this;
-			if (c == true) {
-				new SnakeGame.View($("#grid"), this.highScore);
-			}
+			this.over();
     }
   };
 	
