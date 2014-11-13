@@ -2,7 +2,7 @@
   if (typeof SnakeGame === "undefined") {
     window.SnakeGame = {};
   }
-
+		
   var View = SnakeGame.View = function ($el, highScore) {
     this.$el = $el;
 		this.paused = false;
@@ -13,8 +13,9 @@
       this.step.bind(this),
       View.STEP_MILLIS
     );
-
+		
     $(window).on("keydown", this.handleKeyEvent.bind(this));
+		
   };
 
   View.KEYS = {
@@ -40,11 +41,12 @@
 	
 	View.prototype.handlePause = function () {
 		this.paused = !this.paused;
-		if ($( ".modal").hasClass("is-active")){
-			$( ".modal").removeClass("is-active")
-		} else {
-			$( ".modal").addClass("is-active")
-		}
+		($(".modal").toggleClass("is-active"));
+		// if ($( ".modal").hasClass("is-active")){
+		// 	$( ".modal").removeClass("is-active");
+		// } else {
+		// 	$( ".modal").addClass("is-active");
+		// }
 	}
 
   View.prototype.render = function () {
@@ -60,12 +62,12 @@
 		
 		var headIdx = board.snake.segments.length - 1;
 		var head = board.snake.segments[headIdx];
-		cellsMatrix[head.x][head.y].addClass("drake");
+		if (head){ 
+			cellsMatrix[head.x][head.y].addClass("drake");
+		}
 		
 		$( "li#points" ).text( "Points  " + this.board.points );
 		$( "li#high_score").text( "High Score  " + this.highScore );
-		
-		// console.log(board.snake.segments)
 
     cellsMatrix[board.apple.position.x][board.apple.position.y].addClass("apple");
 
@@ -105,8 +107,10 @@
 			
 			var currentView = this;
 			if (c == true) {
-				new SnakeGame.View($("#grid"), currentView.highScore);
+				new SnakeGame.View($("#grid"), this.highScore);
 			}
     }
   };
+	
+	
 })();

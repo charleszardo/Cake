@@ -20,6 +20,11 @@ li {
 	float: left;
 }
 
+a {
+	text-decoration: none;
+	color: gray;
+}
+
 #grid-container {
 	margin: 25px auto;
 	padding: 20px 20px 0 20px;
@@ -116,6 +121,7 @@ li {
   z-index: 999;
   background: rgba(0, 0, 0, 0.7);
 }
+
 .modal-content {
   position: absolute;
   z-index: 1000;

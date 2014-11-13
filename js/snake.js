@@ -30,12 +30,16 @@
 		var y = Math.floor(Math.random() * this.board.dim);
 		
 		var pos = new Coord(x, y);
-		while (!this.board.emptyCell(pos)){
-			var pos = new Coord(x, y);
-		};
-		
+		// while (!this.board.emptyCell(pos)){
+		// 	var pos = new Coord(x, y);
+		// };
+		if (!this.board.emptyCell(pos)){
+			this.place();
+		} else {
+			this.position = pos;
+		}
 		// this.position = new Coord(x, y);
-		this.position = pos;
+		// this.position = pos;
 	};
 	
 	var Snake = SnakeGame.Snake = function (board) {
@@ -138,22 +142,22 @@
 	
 	Board.prototype.emptyCell = function (cell) {
 		var currentBoard = this;
-		console.log(this.snake)
+		var empty = true;
 		if (this.snake){
-			currentBoard.snake.segments.forEach(function (segment) {
+			this.snake.segments.forEach(function (segment) {
 				if (segment.equals(cell)){
-					return false;
+					empty = false;
 				}
 			});
 		}
 		
 		if (this.apple){
-			if (currentBoard.apple.position.equals(cell)){
-				return false;
+			if (this.apple.position.equals(cell)){
+				empty = false;
 			}
 		}
 		
-		return true;
+		return empty;
 	}
 	
 	Board.prototype.render = function () {
