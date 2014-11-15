@@ -96,13 +96,12 @@ a {
 	padding: 2px;
 	margin: 10px auto;
 	text-align: center;
-	background-image: url('../images/light_toast.png');
-	
+	background-image: url('../images/light_toast.png');	
 }
 
 #controls {
 	text-align: center;
-	margin-top: 45px;
+	margin-top: 20px;
 	font-size: 14px;
 	font-family: sans-serif;
 }
@@ -141,7 +140,23 @@ a {
 	display: none;
 }
 
-.modal-display.current {
+.start {
+	display: none;
+}
+
+.start.current {
+	display: block;
+}
+
+.modal-display.current{
+	display: block;
+}
+
+.modal-credits {
+	display: none;
+}
+
+.modal-credits {
 	display: block;
 }
 
@@ -159,18 +174,44 @@ a {
 	text-align: center;
 }
 
-button {
-	cursor: pointer;
-  -webkit-appearance: none;
-  outline: 0;
-  display: inline-block;
-  box-sizing: content-box;
-  width: 100px;
-  background: transparent;
-  color: inherit;
-	padding: 25px 0 0 150px;
+.separator {
+	width: 50px;
+	margin: auto;
 }
 
-button:hover {
-	background-position: 0 -50px;
+.separator img {
+	width: 50px;
+	height: 50px;
 }
+
+.reset:hover {
+	cursor: pointer;
+}
+
+.links {
+	width: 150px;
+	margin: auto;
+	padding-left: 10px;
+}
+
+.links img {
+		display: inline-block;
+		background-size: 100%;
+		width: 30px;
+		height: 30px;
+		text-indent: -999em; text-align: left;
+		-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+		-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		margin-bottom: 5px;
+		margin-left: 10px;
+}
+
+.links img:hover {
+	cursor: pointer;
+	-moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+	box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25); }

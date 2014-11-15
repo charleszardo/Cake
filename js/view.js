@@ -5,18 +5,11 @@
 		
   var View = SnakeGame.View = function ($el, highScore) {
     this.$el = $el;
-		this.paused = false;
+		this.paused = true;
 		this.highScore = highScore;
-		this.inPlay = true;
-
+		this.inPlay = false;
     this.board = new SnakeGame.Board(18);
-    this.intervalId = window.setInterval(
-      this.step.bind(this),
-      View.STEP_MILLIS
-    );
-		
-    $(window).on("keydown", this.handleKeyEvent.bind(this));
-		
+		this.beginScreen();
   };
 
   View.KEYS = {
@@ -27,6 +20,38 @@
   };
 
   View.STEP_MILLIS = 100;
+	
+	View.prototype.beginScreen = function () {
+		($(".modal").toggleClass("is-active"));
+		$(window).on("keydown", this.handleStartKeyEvent.bind(this));
+	};
+	
+  View.prototype.handleStartKeyEvent = function (event) {
+		if (event.keyCode == 32){
+			event.preventDefault();
+			this.start();
+    } else {
+      // inactive key, ignore.
+    }
+  };
+	
+	View.prototype.start = function () {
+		($(".modal").toggleClass("is-active"));
+		($(".start").removeClass("modal-display"));
+		($(".start").removeClass("current"));
+		($(".pause").addClass("current"));
+		$(window).off()
+		this.paused = false;
+		this.inPlay = true;
+		
+    this.intervalId = window.setInterval(
+      this.step.bind(this),
+      View.STEP_MILLIS
+    );
+		
+    $(window).on("keydown", this.handleKeyEvent.bind(this));
+	};
+	
 
   View.prototype.handleKeyEvent = function (event) {
 		if (event.keyCode == 32 && !this.inPlay){
@@ -64,8 +89,8 @@
 			cellsMatrix[head.x][head.y].addClass("drake");
 		}
 		
-		$( "li#points" ).text( "Points  " + this.board.points );
-		$( "li#high_score").text( "High Score  " + this.highScore );
+		$( "li#points" ).text( "Points " + this.board.points );
+		$( "li#high_score").text( "High Score " + this.highScore );
 
     cellsMatrix[board.apple.position.x][board.apple.position.y].addClass("apple");
 
@@ -97,7 +122,7 @@
 		this.inPlay = true;
 		this.highScore = highScore;
 		this.board = new SnakeGame.Board(18);
-		$("button").off();
+		$(".reset").off();
 		$(window).off();
     this.intervalId = window.setInterval(
       this.step.bind(this),
@@ -120,7 +145,7 @@
 		
 		var currentView = this;
 
-		$("button").click(function() {
+		$(".reset").click(function() {
 			currentView.reset(currentView.highScore);	
 		})
 	}

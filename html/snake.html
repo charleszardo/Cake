@@ -11,7 +11,8 @@
     <script type="text/javascript"
              src="../js/view.js"></script>
     <link rel="stylesheet" href="../css/snake.css"></link>
-		<link rel="stylesheet" href="../css/webicons.css"></link>
+		<link rel="stylesheet" href="../css/webicons.less"></link>
+		<link rel="stylesheet" href="../css/webicons.scss"></link>
 		<link rel="shortcut icon" href="../images/favicon.ico">
 		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   </head>
@@ -32,19 +33,24 @@
 			</div>
 			
     	<div id="grid"></div>
-			<p id="controls">space: pause</p>
 		
-		</div>
-		
-		<div id="credits">
-			<p>Built by <a href="http://www.charnuska.com">Dave Charnuska</a></p>
 		</div>
 		
 		<section id="modal" class="modal">
 		    <article class="modal-content">
 		      <span class="modal-close js-hide-modal">&times;</span>
 					
-					<div class="modal-display current">
+					<div class="modal-display current start">
+						<h1 id="modal-header">cake</h1>
+						
+						<p id="controls">
+							<strong>controls:</strong> up | down | left | right | space - pause
+						</p>
+						
+						<p id="controls">press space to start</p>
+					</div>
+					
+					<div class="modal-display pause">
 			      <h1 id="modal-header">paused</h1>
 
 						<p id="controls">
@@ -52,16 +58,35 @@
 						</p>
 					</div>
 					
-					<div class="modal-display">
+					<div class="modal-start">
+					
+					<div id="game-over" class="modal-display">
 						<h1 id="modal-header">game over</h1>
-						<button>play again</button>
+						<p id="controls" class="reset">play again?</p>
 					</div>
+					
+					<div class="modal-credits separator">
+						<img src="../images/birthday_cake.jpeg">
+					</div>
+					
+					<div class="modal-credits">
+						<p id="controls">built by <a href="http://www.charnuska.com">dave charnuska</a></p>
+						<div class="links">
+							<a href="https://github.com/charleszardo">
+								<img src="../images/webicon-github-m.png">
+							</a>
+							<a href="http://www.linkedin.com/in/davidcharnuska/">
+								<img src="../images/webicon-linkedin-m.png">
+							</a>
+							<a href="mailto:dave@charnuska.com">
+							<img src="../images/webicon-mail-m.png">
+						</div>
+					</div>
+
 		    </article>
 
 		    <div class="modal-screen js-hide-modal"></div>
 		</section>
-		
-		
 
     <script>
       $(function () {
