@@ -4,3 +4,4 @@ The classic arcade game Snake, with Drake & cakes.  Built with JavaScript and jQ
 
 **Controls:** Up, down, left, right arrow keys change to respective direction.  Hit space to pause/unpause.
 
+**[Live Demo](cake.charnuska.com)**
