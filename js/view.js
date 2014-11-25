@@ -4,6 +4,8 @@
   }
 		
   var View = SnakeGame.View = function ($el, highScore) {
+		var img = new Image();
+		img.src = "./images/drakeface.png";
     this.$el = $el;
 		this.paused = true;
 		this.highScore = highScore;
