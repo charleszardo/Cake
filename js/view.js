@@ -57,6 +57,7 @@
 
   View.prototype.handleKeyEvent = function (event) {
 		if (event.keyCode == 32 && !this.inPlay){
+			event.preventDefault();
 			this.reset(this.highScore);
 		} else if (event.keyCode == 32){
 			event.preventDefault();
