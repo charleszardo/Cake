@@ -14,42 +14,42 @@
 		<link rel="stylesheet" href="css/webicons.less"></link>
 		<link rel="stylesheet" href="css/webicons.scss"></link>
 		<link rel="shortcut icon" href="images/favicon.ico">
-		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
 
-		
+
 		<div id="grid-container">
 			<div id="title-container">
 				<div id="title">
 					cake
 				</div>
 			</div>
-			
+
 			<div id="info">
 				<li id="points"></li>
 				<li id="high_score"></li>
 			</div>
-			
+
     	<div id="grid"></div>
-		
+
 		</div>
-		
+
 		<section id="modal" class="modal">
 		    <article class="modal-content">
 		      <span class="modal-close js-hide-modal">&times;</span>
-					
+
 					<div class="modal-display current start">
 						<h1 id="modal-header">cake</h1>
-						
+
 						<p id="controls">
 							<strong>controls:</strong> up | down | left | right | space - pause
 						</p>
-						
+
 						<p id="controls">press space to start</p>
 					</div>
-					
+
 					<div class="modal-display pause">
 			      <h1 id="modal-header">paused</h1>
 
@@ -57,18 +57,18 @@
 							<strong>controls:</strong> up | down | left | right | space - pause
 						</p>
 					</div>
-					
+
 					<div class="modal-start">
-					
+
 					<div id="game-over" class="modal-display">
 						<h1 id="modal-header">game over</h1>
 						<p id="controls" class="reset">play again?</p>
 					</div>
-					
+
 					<div class="modal-credits separator">
 						<img src="images/birthday_cake.jpeg">
 					</div>
-					
+
 					<div class="modal-credits">
 						<p id="controls">built by <a href="http://www.charnuska.space">dave charnuska</a></p>
 						<div class="links">
@@ -91,7 +91,7 @@
 
     <script>
       $(function () {
-				new SnakeGame.View($("#grid"), 0); 
+				new SnakeGame.View($("#grid"), 0);
 			});
     </script>
   </body>

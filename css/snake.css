@@ -5,7 +5,7 @@ html, body, header, h1, h2, nav, ul, li, a, footer, small, button {
   border: 0;
   font: inherit;
   vertical-align: baseline;
-	
+
 }
 
 /* --- Set basic html elements --- */
@@ -34,8 +34,11 @@ a {
 }
 
 #grid {
-	margin: auto;
+	margin-left: 58px;
 	width: 486px;
+	margin-top: 20px;
+	background-image: url(../images/drakeface.png);
+  position: absolute;
 }
 
 #title-container {
@@ -67,18 +70,19 @@ a {
   height: 25px;
   width: 25px;
   background: white;
-
   border: solid gray 1px;
 }
 
 .snake {
   /*background-color: #8FB6CC;*/
-	background-image: url('../images/drakeface.png');
+	/* background-image: url('../images/drakeface.png'); */
+  background-color: transparent;
 	background-size: 25px 25px;
 }
 
 .drake {
-	background-image: url('../images/drakeface.png');
+	/* background-image: url('../images/drakeface.png'); */
+  background-color: transparent;
 	background-size: 25px 25px;
 }
 
@@ -96,7 +100,7 @@ a {
 	padding: 2px;
 	margin: 10px auto;
 	text-align: center;
-	background-image: url('../images/light_toast.png');	
+	background-image: url('../images/light_toast.png');
 }
 
 #controls {
